@@ -15,7 +15,19 @@ fi
 
 ln -sf $DOTFILES_DIR/zsh/zshrc ~/.zshrc
 
-# change shell to zsh
+# Sync custom plugins (including submodules)
+CUSTOM_SRC="$DOTFILES_DIR/zsh/plugins/custom"
+CUSTOM_DEST="$HOME/.oh-my-zsh/custom/plugins"
+
+# Ensure git submodules are initialized
+echo "🔃 Updating submodules..."
+git -C "$DOTFILES_DIR" submodule update --init --recursive
+
+echo "Syncing custom plugins..."
+mkdir -p "$CUSTOM_DEST"
+rsync -a "$CUSTOM_SRC/" "$CUSTOM_DEST/"
+
+# Change shell to zsh
 if [ "$SHELL" != "$(which zsh)" ]; then
   echo "🔁 Changing default shell to zsh..."
   chsh -s "$(which zsh)"
