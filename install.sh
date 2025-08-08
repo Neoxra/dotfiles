@@ -83,6 +83,10 @@ if [ "$SHELL" != "$(which zsh)" ]; then
   chsh -s "$(which zsh)"
 fi
 
+########## tmux ##########
+echo "Linking tmux configuration..."
+ln -sf $DOTFILES_DIR/config/tmux/tmux.conf ~/.tmux.conf
+
 ########## Done ##########
 echo ""
 echo "All done! Final checklist:"
