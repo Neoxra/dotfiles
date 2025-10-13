@@ -4,8 +4,12 @@ set -e # Stop if any command fails
 
 DOTFILES_DIR="$(realpath "$(dirname "$0")")"
 
+# Install build essential
+sudo apt install build-essential curl
+
 echo "Installing Oh My Zsh..."
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sudo apt install zsh
   export RUNZSH=no
   export CHSH=no
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
