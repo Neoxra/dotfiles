@@ -1,0 +1,23 @@
+
+# ROS2
+source /opt/ros/jazzy/setup.zsh
+
+# Zenohd
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+
+# Enable bash completion compatibility in zsh
+# autoload -U +X compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
+
+# Alias function
+alias rtl="ros2 topic list"
+alias rti="ros2 topic info"
+alias rte="ros2 topic echo"
+alias rth="ros2 topic hz"
+
+rr() {
+  ros2 run "$@"
+}
+rl() {
+  ros2 launch "$@"
+}
