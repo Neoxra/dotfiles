@@ -101,7 +101,7 @@ else
   sh autogen.sh
   ./configure
   make && sudo make install
-  cd ..
+  cd ../..
   rm -rf tmp
 fi
 echo "Linking tmux configuration..."
