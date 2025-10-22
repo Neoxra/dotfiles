@@ -9,15 +9,23 @@ export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 # autoload -U +X compinit && compinit
 # autoload -U +X bashcompinit && bashcompinit
 
-# Alias function
+# Alias
 alias rtl="ros2 topic list"
 alias rti="ros2 topic info"
 alias rte="ros2 topic echo"
 alias rth="ros2 topic hz"
+alias rbi="ros2 bag info"
 
+# Alias function
 rr() {
   ros2 run "$@"
 }
+
 rl() {
   ros2 launch "$@"
+}
+
+run_foxglove()
+{
+  ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 }

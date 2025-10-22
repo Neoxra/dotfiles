@@ -1,24 +1,4 @@
-
-# ROS2
-source /opt/ros/jazzy/setup.zsh
-
-# Zenohd
-export RMW_IMPLEMENTATION=rmw_zenoh_cpp
-
-# Enable bash completion compatibility in zsh
-# autoload -U +X compinit && compinit
-# autoload -U +X bashcompinit && bashcompinit
-
+# Alias
+alias sourceroot="source ~/.zshrc"
+alias sourcehere="source install/setup.zsh"
 # Alias function
-rt() {
-  ros2 topic "$@"
-}
-rn() {
-  ros2 node "$@"
-}
-rr() {
-  ros2 run "$@"
-}
-rl() {
-  ros2 launch "$@"
-}
