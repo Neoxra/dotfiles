@@ -5,6 +5,8 @@ source /opt/ros/jazzy/setup.zsh
 # Zenohd
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 
+# For ros2 launch colorize
+export RCUTILS_COLORIZED_OUTPUT=1
 # Enable bash completion compatibility in zsh
 # autoload -U +X compinit && compinit
 # autoload -U +X bashcompinit && bashcompinit
@@ -46,7 +48,7 @@ theros()
     return
   fi
 
-  local g1_id=1
+  local g1_id=0
   local my_id=233
 
   if [[ -z "${ROS_DOMAIN_ID+x}" ]]; then
