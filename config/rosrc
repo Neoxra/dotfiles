@@ -29,3 +29,37 @@ run_foxglove()
 {
   ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 }
+
+# Switch ROS_DOMAIN_ID between local pc and g1.
+theros()
+{
+  # Color codes
+  local GREEN="\033[1;32m"
+  local YELLOW="\033[1;33m"
+  local BLUE="\033[1;34m"
+  local RED="\033[1;31m"
+  local RESET="\033[0m"
+
+  if [[ $1 = "reset" ]]; then
+    unset ROS_DOMAIN_ID
+    echo -e "${RED}ROS_DOMAIN_ID has been unset.${RESET}"
+    return
+  fi
+
+  local g1_id=1
+  local my_id=233
+
+  if [[ -z "${ROS_DOMAIN_ID+x}" ]]; then
+    export ROS_DOMAIN_ID=$g1_id
+    echo -e "${YELLOW}ROS_DOMAIN_ID not set. Defaulted to ${GREEN}$ROS_DOMAIN_ID.${RESET}"
+    return
+  fi
+
+  if [[ $ROS_DOMAIN_ID = $g1_id ]]; then
+    export ROS_DOMAIN_ID=$my_id
+    echo "${BLUE}Switch to local ROS_DOMAIN_ID $ROS_DOMAIN_ID.${RESET}"
+  else
+    export ROS_DOMAIN_ID=$g1_id
+    echo "${GREEN}Switch to G1 ROS_DOMAIN_ID $ROS_DOMAIN_ID.${RESET}"
+  fi  
+}
