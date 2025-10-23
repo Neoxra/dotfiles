@@ -63,3 +63,35 @@ theros()
     echo "${GREEN}Switch to G1 ROS_DOMAIN_ID $ROS_DOMAIN_ID.${RESET}"
   fi  
 }
+
+# Only usable under workspace or src.
+ros2cd() {
+  local ws_dir pkg_dir
+
+  # Find workspace (assume script is run inside workspace or parent)
+  if [[ -d "src" ]]; then
+    ws_dir=$(pwd)
+  elif [[ -d "../src" ]]; then
+    ws_dir=$(dirname "$(pwd)")
+  else
+    echo "❌ Cannot find 'src' folder in current or parent directory."
+    return 1
+  fi
+
+  # No argument: list all packages
+  if [[ -z "$1" ]]; then
+    echo "Available packages in ${ws_dir}/src:"
+    find "${ws_dir}/src" -mindepth 1 -maxdepth 2 -type d -exec basename {} \; | sort
+    return 0
+  fi
+
+  # Try to find matching directory
+  pkg_dir=$(find "${ws_dir}/src" -type d -name "$1" -print -quit)
+  if [[ -z "$pkg_dir" ]]; then
+    echo "❌ Package '$1' not found under ${ws_dir}/src"
+    return 1
+  fi
+
+  cd "$pkg_dir" || return
+  echo "📦 Entered package: $(pwd)"
+}
