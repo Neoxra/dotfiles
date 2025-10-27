@@ -49,7 +49,7 @@ theros()
   fi
 
   local g1_id=0
-  local my_id=233
+  local my_id=91
 
   if [[ -z "${ROS_DOMAIN_ID+x}" ]]; then
     export ROS_DOMAIN_ID=$g1_id
