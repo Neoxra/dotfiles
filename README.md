@@ -1,9 +1,9 @@
 # Install
 
-This repo is JoeJoe's personal dotfiles, including 'zsh', 'oh-my-zsh', etc.
+This repo is Nick Bell's personal dotfiles, including 'zsh', 'oh-my-zsh', etc.
 
 ```
-git clone git@github.com:JiahengZhao/dotfiles.git
+git clone ...
 cd dotfiles
 bash install.sh
 ```
