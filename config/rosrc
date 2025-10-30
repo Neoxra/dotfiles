@@ -1,4 +1,3 @@
-
 # ROS2
 source /opt/ros/jazzy/setup.zsh
 
@@ -32,8 +31,12 @@ run_foxglove()
   ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 }
 
+g1_setup() {
+  source /home/nick-bell/dotfiles/config/setup_unitree.sh
+}
+
 # Switch ROS_DOMAIN_ID between local pc and g1.
-theros()
+flipros()
 {
   # Color codes
   local GREEN="\033[1;32m"
@@ -49,7 +52,7 @@ theros()
   fi
 
   local g1_id=0
-  local my_id=91
+  local my_id=69
 
   if [[ -z "${ROS_DOMAIN_ID+x}" ]]; then
     export ROS_DOMAIN_ID=$g1_id
