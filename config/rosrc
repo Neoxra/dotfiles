@@ -1,8 +1,12 @@
 # ROS2
 source /opt/ros/jazzy/setup.zsh
 
+# UV
+source $HOME/.local/bin/env
+
 # Zenohd
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+export ROS_DOMAIN_ID=0
 
 # For ros2 launch colorize
 export RCUTILS_COLORIZED_OUTPUT=1

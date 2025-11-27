@@ -6,3 +6,4 @@ sourcehere() {
     export PYTHONPATH=.venv/lib/python3.12/site-packages:$PYTHONPATH
 }
 # Alias function
+alias kk="kill -9 %%"
